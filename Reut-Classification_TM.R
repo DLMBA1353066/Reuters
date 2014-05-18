@@ -73,7 +73,7 @@ for(i in 1:11)
 	B <- table(as.factor(Dati[Train,2]), predict(NB,words[1:length(Train),]))
 	AB[i] <- sum(diag(B))/sum(B)
 
-	SVM <- svm(words[1:length(Train),], class, cost=10, gamma=0.1)
+	SVM <- svm(words[1:length(Train),], class, cost=10, gamma=0.1, kernel ="linear")
 	S <- table(as.factor(Dati[Train,2]), predict(SVM,words[1:length(Train),]))
 	Stest <- table(as.factor(Dati[Test,2]), predict(SVM,words[(length(Train)+1):length(list),]))
 	AS[i] <- sum(diag(S))/sum(S)
