@@ -58,8 +58,6 @@ DFterms <- as.data.frame(inspect(dtm_tfxidf))
 words <-(as.matrix(inspect(removeSparseTerms(dtm_tfxidf, 0.95))))
 veri <- factor(Dati[cllist,2])
 
-w2 <- as.matrix(inspect(removeSparseTerms(dtm, 0.95)))
-
 #SECTION 2: Clustering algorithms
 
 d <- dist(words, method="euclidean") 
@@ -69,7 +67,7 @@ K <- table(cl1$cluster, veri)
 s1 <- silhouette(cl1$cl, d^2)
 plot(s1, main="Silhouette K-Means")
 
-clu1 <- pam(w2, 4) #PAM 
+clu1 <- pam(words, 4) #PAM 
 P<-table(clu1$cluster, veri)
 si <- silhouette(clu1)
 str <- str(si)
