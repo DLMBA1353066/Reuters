@@ -11,4 +11,4 @@ The second part performs the Cluster Analysis in three different method: Hierarc
 Also, is reported the R code for the contingencty table, the computation and plot of the silhouette and the computation of the Weighted Average Entroy.
 
 In both the files are specified the libraries to install for the analysis.
-The code may be copied-and-paste as it is, and then executed.
+The code may be copied-and-pasted as it is, and then executed.
