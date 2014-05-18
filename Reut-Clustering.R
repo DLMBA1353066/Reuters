@@ -16,14 +16,16 @@ require(tm.corpus.Reuters21578)
 data(Reuters21578)
 test <- Reuters21578
 
-Dati <- as.data.frame(matrix(0,21578, 3))
-colnames(Dati) <- c("TOPICS","Topics","LEWISSPLIT")
+
+Dati <- as.data.frame(matrix(0,21578, 12))
+colnames(Dati)[c(1,2,12)] <- c("TOPICS","Topics","LEWISSPLIT")
 for(i in 1:21578)
 {
 	doc <- test[[i]]
 	Dati[i,1] <- LocalMetaData(doc)$TOPICS
-	Dati[i,2] <- LocalMetaData(doc)$Topics[1]
-	Dati[i,3] <- LocalMetaData(doc)$LEWISSPLIT
+	n<-length(LocalMetaData(doc)$Topics)
+	Dati[i,2:(min(12,(n+1)))] <- LocalMetaData(doc)$Topics[1:(min(11,n))]
+	Dati[i,12] <- LocalMetaData(doc)$LEWISSPLIT
 }
 
 

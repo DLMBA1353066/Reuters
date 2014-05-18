@@ -13,7 +13,6 @@ install.packages("/dcs/pg11/phil/reuters/tm.corpus.Reuters21578/", repos = NULL,
 data(Reuters21578)
 test<- Reuters21578
 
-
 Dati <- as.data.frame(matrix(0,21578, 12))
 colnames(Dati)[c(1,2,12)] <- c("TOPICS","Topics","LEWISSPLIT")
 for(i in 1:21578)
@@ -25,8 +24,10 @@ for(i in 1:21578)
 	Dati[i,12] <- LocalMetaData(doc)$LEWISSPLIT
 }
 
+#Choose most frequent class
 sub <- Dati[is.element(Dati$Topics, c("crude","earn","acq",
 "money-fx","grain","trade","interest","ship","wheat","corn"))& Dati$V3==0, 2]
+table(sub)
 
 list <- as.integer(rownames(Dati[
 			is.element(Dati$Topics, c("crude","earn","acq",
